@@ -49,6 +49,7 @@ void FadeinState::processAnimation(Director *director)
                 continue;
             Picture& picture = *director->getPictureAt(i);
             picture.setContent(molePhoto);
+            hasMole[i] = true;
         }
         srand(time(NULL));
         isInitialized = true;
@@ -62,15 +63,19 @@ void FadeinState::processAnimation(Director *director)
                 molePic.setContent(molePhoto);
                 molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
                 molePic.setEnableAnimationTime(director->getCurrentTime());
+                hasMole[mole] = true;
             }
         }
     }
 
     Picture& picture = *director->getPictureAt(eyePosIndex);
     picture.setFocus(true);
-    if (picture.getAnimation()->animationEnded()) {
-        Score s;
-        cout << s.score++ << endl;
+    if (eyePosIndex % 11 != 0 && eyePosIndex % 11 != 10 && picture.getAnimation()->animationEnded()) {
+        if (hasMole[eyePosIndex]) {
+            Score s;
+            cout << s.score++ << endl;
+            hasMole[eyePosIndex] = false;
+        }
         picture.setAnimation(
                 FadeoutAnimationEnum,
                 picture,

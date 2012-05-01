@@ -31,6 +31,7 @@ private:
 	int eyePosIndex;
 	cv::Mat photo;
     bool isInitialized;
+    bool hasMole[44];
 };
 
 #endif // FADEIN_STATE_H
