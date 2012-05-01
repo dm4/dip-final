@@ -8,6 +8,7 @@
 #define FADEIN_STATE_H
 
 #include "AnimationState.h"
+#include "Picture.h"
 
 /*!
  * \brief
@@ -26,6 +27,7 @@ class FadeinState: public AnimationState
 		void processMouseEvent(Director *director, const cv::Point &mousePos);
 		// 	void processOSC(Director *director, const std::map<std::string, osc::ReceivedMessage *> &messageMap);
 		void processAnimation(Director *director);
+        void setScore(Picture &picture, int score);
 
 	private:
 		int eyePosIndex;

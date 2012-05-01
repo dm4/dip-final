@@ -207,7 +207,8 @@ void Director::processGlobalKeyEvent(const int key)
 {
 	switch(key) {
 		case 'r': case 'R':
-			setAnimationState(new InitState);
+// 			setAnimationState(new InitState);
+			setAnimationState(new FadeinState);
 			break;
 		case 'l': case 'L':
 			setAnimationState(new LayoutState);

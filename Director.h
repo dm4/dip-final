@@ -15,6 +15,7 @@
 #include <string>
 #include "Picture.h"
 #include "InitState.h"
+#include "FadeinState.h"
 // #include "OSCListener.h"
 #include "ImagesPool.h"
 
@@ -54,7 +55,7 @@ class Director
 		// 		imagesPool(new ImagesPool), startTickCount(0), painting(cv::Mat(paintingSize, CV_8UC3)), 
 		// 		canRecord(false), capturePhotoPath("") {}
 		Director() {
-			animationState = new InitState;
+			animationState = new FadeinState;
 			imagesPool = new ImagesPool;
 			startTickCount = 0;
 			painting = cv::Mat(paintingSize, CV_8UC3);

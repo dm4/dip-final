@@ -54,9 +54,13 @@ void FadeinState::processAnimation(Director *director)
 		}
 		srand(time(NULL));
 		isInitialized = true;
-		
-		Picture& picture = *director->getPictureAt(0);
+
+		Picture& picture = *director->getPictureAt(11);
 		black = cvCloneImage(new IplImage(picture));
+        (new Score())->score = 0;
+
+		Picture& scorePic = *director->getPictureAt(0);
+        setScore(scorePic, 0);
 	}
 
 	if( rand()%10 > 5){
@@ -77,18 +81,11 @@ void FadeinState::processAnimation(Director *director)
 	if (eyePosIndex % 11 != 0 && eyePosIndex % 11 != 10 && picture.getAnimation()->animationEnded()) {
 		if (hasMole[eyePosIndex]) {
 			Score s;
-			s.score++ ;
+			s.score++;
 			hasMole[eyePosIndex] = false;
 			Picture& scorePic = *director->getPictureAt(0);
-			//IplImage *scoreImg = new IplImage(Mat::zeros(110,150, scorePic.getType()));
-			IplImage *scoreImg = new IplImage(scorePic);
-			cvCopy(black, scoreImg, NULL);
-			CvFont font;
-			cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 1.0, 1.0, 0, 1, CV_AA);
-			char scoreStr[10];
-			sprintf(scoreStr, "%d", s.score);
-			cvPutText(scoreImg, scoreStr, cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
-			scorePic.setContent(scoreImg);
+            setScore(scorePic, s.score);
+// 			scorePic.setContent(scoreImg);
 		}
 		picture.setAnimation(
 				FadeoutAnimationEnum,
@@ -99,4 +96,14 @@ void FadeinState::processAnimation(Director *director)
 		ani->setCanReverse(true);
 		picture.setEnableAnimationTime(director->getCurrentTime());
 	}
+}
+
+void FadeinState::setScore(Picture &picture, int score) {
+    IplImage *scoreImg = new IplImage(picture);
+    cvCopy(black, scoreImg, NULL);
+    CvFont font;
+    cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 1.0, 1.0, 0, 1, CV_AA);
+    char scoreStr[10];
+    sprintf(scoreStr, "%d", score);
+    cvPutText(scoreImg, scoreStr, cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
 }
