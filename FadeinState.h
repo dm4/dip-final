@@ -18,16 +18,19 @@
 class FadeinState: public AnimationState
 {
 public:
+    FadeinState() {
+        isInitialized = false;
+    }
 	void processTime(Director *director, const int64 &currentTickCount);
 	void processKeyEvent(Director *director, const int &key);
 	void processMouseEvent(Director *director, const cv::Point &mousePos);
-// 	void processOSC(Director *director, 
-// 		const std::map<std::string, osc::ReceivedMessage *> &messageMap);
+// 	void processOSC(Director *director, const std::map<std::string, osc::ReceivedMessage *> &messageMap);
 	void processAnimation(Director *director);
 
 private:
 	int eyePosIndex;
 	cv::Mat photo;
+    bool isInitialized;
 };
 
 #endif // FADEIN_STATE_H
