@@ -6,6 +6,7 @@
 #include "AllAnimationStates.h"
 #include "Director.h"
 #include <iostream>
+#include "Score.h"
 
 using namespace std;
 using namespace cv;
@@ -44,6 +45,8 @@ void FadeinState::processAnimation(Director *director)
         // 		director->takePhoto(photo);
 
         for (int i = 0; i < numPhotos; ++i) {
+            if (i % 11 == 0 || i % 11 == 10)
+                continue;
             Picture& picture = *director->getPictureAt(i);
             picture.setContent(molePhoto);
         }
@@ -53,17 +56,21 @@ void FadeinState::processAnimation(Director *director)
 
     if( rand()%10 > 7){
         int mole = rand()%44;
-        Picture& molePic = *director->getPictureAt(mole);
-        if (molePic.getAnimation()->animationEnded()) {
-            molePic.setContent(molePhoto);
-            molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
-            molePic.setEnableAnimationTime(director->getCurrentTime());
+        if (mole % 11 != 0 && mole % 11 != 10) {
+            Picture& molePic = *director->getPictureAt(mole);
+            if (molePic.getAnimation()->animationEnded()) {
+                molePic.setContent(molePhoto);
+                molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
+                molePic.setEnableAnimationTime(director->getCurrentTime());
+            }
         }
     }
 
     Picture& picture = *director->getPictureAt(eyePosIndex);
     picture.setFocus(true);
     if (picture.getAnimation()->animationEnded()) {
+        Score s;
+        cout << s.score++ << endl;
         picture.setAnimation(
                 FadeoutAnimationEnum,
                 picture,
