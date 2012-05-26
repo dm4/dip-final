@@ -37,8 +37,15 @@ enum KeyNumber {ESC = 0x1b, ESC_LINUX = 0x10001b, LEFT_ARROW = 0x250000, UP_ARRO
 
 const std::string winName = "ZhengMeiXiang"; //!< Window name
 const cv::Size paintingSize(2048, 768);		//!< Painting size
-const cv::Size numPicturesInPainting(11, 4); //!< the numbers of pictures in row and column
-const int numPhotos = numPicturesInPainting.width * numPicturesInPainting.height; //!< the total number pictures in the painting
+// const cv::Size numPicturesInPainting(11, 4); //!< the numbers of pictures in row and column
+// const int numPhotos = numPicturesInPainting.width * numPicturesInPainting.height; //!< the total number pictures in the painting
+const cv::Size numPicturesInPainting(3, 2); //!< the numbers of pictures in row and column
+const int numPhotos = numPicturesInPainting.width * numPicturesInPainting.height + 8; //!< the total number pictures in the painting
+
+// 6 000 111 222 10
+// 7 000 111 222 11
+// 8 333 444 555 12
+// 9 333 444 555 13
 
 /*!
  * \brief

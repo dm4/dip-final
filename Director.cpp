@@ -32,7 +32,7 @@ using namespace cv;
 const int delay = 1000 / 35; //!< delay time
 // const int sendOSCPort = 7000; //!< Port for sending OSC messages
 // const int oscMessageBufferSize = 1024; //!< Buffer size for a OSC message
-const string settingFilePath = "settings.txt"; //!< Setting file path
+const string settingFilePath = "my-settings.txt"; //!< Setting file path
 const string starPhotosDirPath = "Stars/"; //!< Star photo Directory path
 const Size pictureDefaultSize(110, 150);
 

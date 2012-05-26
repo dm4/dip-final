@@ -46,7 +46,7 @@ void FadeinState::processAnimation(Director *director)
 		// 		director->takePhoto(photo);
 
 		for (int i = 0; i < numPhotos; ++i) {
-			if (i % 11 == 0 || i % 11 == 10)
+			if (i == 6)
 				continue;
 			Picture& picture = *director->getPictureAt(i);
 			picture.setContent(molePhoto);
@@ -55,35 +55,36 @@ void FadeinState::processAnimation(Director *director)
 		srand(time(NULL));
 		isInitialized = true;
 
-		Picture& picture = *director->getPictureAt(11);
+		Picture& picture = *director->getPictureAt(6);
 		black = cvCloneImage(new IplImage(picture));
         (new Score())->score = 0;
 
-		Picture& scorePic = *director->getPictureAt(0);
+		Picture& scorePic = *director->getPictureAt(6);
         setScore(scorePic, 0);
 	}
 
+    // reborn mole
 	if( rand()%10 > 5){
-		int mole = rand()%44;
-		if (mole % 11 != 0 && mole % 11 != 10) {
-			Picture& molePic = *director->getPictureAt(mole);
-			if (molePic.getAnimation()->animationEnded()) {
-				molePic.setContent(molePhoto);
-				molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
-				molePic.setEnableAnimationTime(director->getCurrentTime());
-				hasMole[mole] = true;
-			}
-		}
+		int mole = rand() % numPhotos;
+        if (mole != 6) {
+            Picture& molePic = *director->getPictureAt(mole);
+            if (molePic.getAnimation()->animationEnded()) {
+                molePic.setContent(molePhoto);
+                molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
+                molePic.setEnableAnimationTime(director->getCurrentTime());
+                hasMole[mole] = true;
+            }
+        }
 	}
 
 	Picture& picture = *director->getPictureAt(eyePosIndex);
 	picture.setFocus(true);
-	if (eyePosIndex % 11 != 0 && eyePosIndex % 11 != 10 && picture.getAnimation()->animationEnded()) {
+	if (eyePosIndex != 6 && picture.getAnimation()->animationEnded()) {
 		if (hasMole[eyePosIndex]) {
 			Score s;
 			s.score++;
 			hasMole[eyePosIndex] = false;
-			Picture& scorePic = *director->getPictureAt(0);
+			Picture& scorePic = *director->getPictureAt(6);
             setScore(scorePic, s.score);
 // 			scorePic.setContent(scoreImg);
 		}
