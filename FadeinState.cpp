@@ -41,17 +41,21 @@ void FadeinState::processMouseEvent(Director *director, const Point &mousePos)
 void FadeinState::processAnimation(Director *director)
 {
 	Mat molePhoto = imread("Pics/Diglett.png");
+    Mat red = imread("Pics/red.png");
+    Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
 		// 		director->playMusic("Musics/thunder.wav");
 		// 		director->takePhoto(photo);
 
-		for (int i = 0; i < numPhotos; ++i) {
-			if (i == 6)
-				continue;
+		for (int i = 0; i < 6; ++i) {
 			Picture& picture = *director->getPictureAt(i);
 			picture.setContent(molePhoto);
 			hasMole[i] = true;
 		}
+        for (int i = 7; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			picture.setContent(blue);
+        }
 		srand(time(NULL));
 		isInitialized = true;
 
@@ -64,9 +68,9 @@ void FadeinState::processAnimation(Director *director)
 	}
 
     // reborn mole
-	if( rand()%10 > 5){
+	if( rand()%10 > 4){
 		int mole = rand() % numPhotos;
-        if (mole != 6) {
+        if (mole < 6) {
             Picture& molePic = *director->getPictureAt(mole);
             if (molePic.getAnimation()->animationEnded()) {
                 molePic.setContent(molePhoto);
@@ -79,7 +83,7 @@ void FadeinState::processAnimation(Director *director)
 
 	Picture& picture = *director->getPictureAt(eyePosIndex);
 	picture.setFocus(true);
-	if (eyePosIndex != 6 && picture.getAnimation()->animationEnded()) {
+	if (eyePosIndex < 6 && picture.getAnimation()->animationEnded()) {
 		if (hasMole[eyePosIndex]) {
 			Score s;
 			s.score++;
