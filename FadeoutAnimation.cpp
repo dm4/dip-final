@@ -23,8 +23,8 @@ void FadeoutAnimation::play(Picture &picture) {
 			}
 		}
 
-		if(pow(0.9, a) < 0.001){
-			ended = true;
+		if(pow(0.9, a) < 0.1){
+            setEnd(true);
 		}
 
 		if(picture.getIsFocus()){

@@ -14,9 +14,7 @@
 // #include <Windows.h>
 #include <string>
 #include "Picture.h"
-#include "InitState.h"
-#include "FadeinState.h"
-#include "IdleState.h"
+#include "AllAnimationStates.h"
 // #include "OSCListener.h"
 #include "ImagesPool.h"
 

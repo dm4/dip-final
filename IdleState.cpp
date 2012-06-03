@@ -12,7 +12,7 @@ void IdleState::processTime(Director *director, const int64 &currentTickCount)
 
 void IdleState::processKeyEvent(Director *director, const int &key) {
     if (key == 'a') {
-        director->setAnimationState(new FadeinState);
+        director->setAnimationState(new BeforeGameState);
         director->setStartTickCount();
     }
 }
@@ -43,12 +43,12 @@ void IdleState::processMouseEvent(Director *director, const Point &mousePos)
 void IdleState::processAnimation(Director *director)
 {
     if (!isInitialized) {
-		Picture& picture = *director->getPictureAt(0);
+		Picture& picture = *director->getPictureAt(4);
 		Rect frame = picture.getFrame();
 		picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
         CvFont font;
         cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 1.0, 1.0, 0, 1, CV_AA);
-        cvPutText(new IplImage(picture), "IdleState", cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
+        cvPutText(new IplImage(picture), "Sit to Start", cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
         isInitialized = true;
     }
 

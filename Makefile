@@ -1,4 +1,14 @@
-OBJS = Director.o FadeinState.o FadeoutAnimation.o FlipAnimation.o InitState.o LayoutState.o MirrorState.o Picture.o main.o IdleState.o
+OBJS = Director.o \
+	   IdleState.o \
+	   BeforeGameState.o \
+	   FadeinState.o \
+	   FadeoutAnimation.o \
+	   FlipAnimation.o \
+	   InitState.o \
+	   LayoutState.o \
+	   MirrorState.o \
+	   Picture.o \
+	   main.o
 
 all: main run
 %.o: %.cpp
