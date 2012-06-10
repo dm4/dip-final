@@ -106,7 +106,7 @@ void GhostState::processAnimation(Director *director)
 				director->setStartTickCount();
 				return;
 			}
-			else if (Score::score >= 0) {
+			else if (Score::score >= 10) {
 				director->setAnimationState(new HumanState);
 				director->setStartTickCount();
 				return;
