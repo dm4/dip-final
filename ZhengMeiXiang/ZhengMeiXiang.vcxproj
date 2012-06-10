@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{11D9500D-DC18-4925-9DF6-112D457F4F66}</ProjectGuid>
+    <RootNamespace>ZhengMeiXiang</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)\oscpack;C:\Program Files\Point Grey Research\FlyCapture2\include;C:\OpenCV 2.3.1\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\Point Grey Research\FlyCapture2\lib64\C;C:\OpenCV 2.3.1\build\x64\vc10\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)\oscpack;C:\OpenCV 2.3.1\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\OpenCV 2.3.1\build\x64\vc10\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>C:\OpenCV 2.3.1\build\x64\vc10\bin;C:\OpenCV 2.3.1\build\common\tbb\intel64\vc10;$(ExecutablePath)</ExecutablePath>
+    <ReferencePath>C:\OpenCV 2.3.1\build\x64\vc10\bin;C:\OpenCV 2.3.1\build\common\tbb\intel64\vc10;$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_core231d.lib;opencv_imgproc231d.lib;opencv_highgui231d.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opencv_core231.lib;opencv_imgproc231.lib;opencv_highgui231.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BeforeGameState.cpp" />
+    <ClCompile Include="Director.cpp" />
+    <ClCompile Include="FadeoutAnimation.cpp" />
+    <ClCompile Include="HumanState.cpp" />
+    <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="InteractiveState.cpp" />
+    <ClCompile Include="FlipAnimation.cpp" />
+    <ClCompile Include="InitState.cpp" />
+    <ClCompile Include="LayoutState.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MirrorState.cpp" />
+    <ClCompile Include="OSCListener.cpp" />
+    <ClCompile Include="oscpack\ip\IpEndpointName.cpp" />
+    <ClCompile Include="oscpack\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="oscpack\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="oscpack\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="oscpack\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="oscpack\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="oscpack\osc\OscTypes.cpp" />
+    <ClCompile Include="Picture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AllAnimations.h" />
+    <ClInclude Include="AllAnimationStates.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationFactory.h" />
+    <ClInclude Include="AnimationState.h" />
+    <ClInclude Include="BeforeGameState.h" />
+    <ClInclude Include="Director.h" />
+    <ClInclude Include="FadeoutAnimation.h" />
+    <ClInclude Include="HumanState.h" />
+    <ClInclude Include="IdleState.h" />
+    <ClInclude Include="InteractiveState.h" />
+    <ClInclude Include="FlipAnimation.h" />
+    <ClInclude Include="IdleAnimation.h" />
+    <ClInclude Include="ImagesPool.h" />
+    <ClInclude Include="InitState.h" />
+    <ClInclude Include="LayoutState.h" />
+    <ClInclude Include="MirrorState.h" />
+    <ClInclude Include="OSCListener.h" />
+    <ClInclude Include="oscpack\ip\IpEndpointName.h" />
+    <ClInclude Include="oscpack\ip\NetworkingUtils.h" />
+    <ClInclude Include="oscpack\ip\PacketListener.h" />
+    <ClInclude Include="oscpack\ip\TimerListener.h" />
+    <ClInclude Include="oscpack\ip\UdpSocket.h" />
+    <ClInclude Include="oscpack\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="oscpack\osc\OscException.h" />
+    <ClInclude Include="oscpack\osc\OscHostEndianness.h" />
+    <ClInclude Include="oscpack\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="oscpack\osc\OscPacketListener.h" />
+    <ClInclude Include="oscpack\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="oscpack\osc\OscReceivedElements.h" />
+    <ClInclude Include="oscpack\osc\OscTypes.h" />
+    <ClInclude Include="Picture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release\my-settings.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="原始程式檔">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="AnimationState">
+      <UniqueIdentifier>{943ddc5b-d12b-4bfc-accc-c8fe71f37588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{1afd6b0b-a122-42de-8384-cefa4d373589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="oscpack">
+      <UniqueIdentifier>{f558efa3-d200-444c-8ece-b4d1ae812aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="oscpack\ip">
+      <UniqueIdentifier>{978c5c9e-5c2e-4526-b438-13d09727d75f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="oscpack\osc">
+      <UniqueIdentifier>{6c8bc3fa-00cf-493d-9f71-a298522f7197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{999ad527-968c-417a-a4fa-02fc49507be3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="Director.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="InitState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\ip\IpEndpointName.cpp">
+      <Filter>oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\ip\win32\NetworkingUtils.cpp">
+      <Filter>oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\ip\win32\UdpSocket.cpp">
+      <Filter>oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\osc\OscOutboundPacketStream.cpp">
+      <Filter>oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\osc\OscPrintReceivedElements.cpp">
+      <Filter>oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\osc\OscReceivedElements.cpp">
+      <Filter>oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="oscpack\osc\OscTypes.cpp">
+      <Filter>oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="OSCListener.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="Picture.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="FlipAnimation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="LayoutState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="MirrorState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractiveState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeGameState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="HumanState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeoutAnimation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Director.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="InitState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\ip\IpEndpointName.h">
+      <Filter>oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\ip\NetworkingUtils.h">
+      <Filter>oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\ip\PacketListener.h">
+      <Filter>oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\ip\TimerListener.h">
+      <Filter>oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\ip\UdpSocket.h">
+      <Filter>oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\MessageMappingOscPacketListener.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscException.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscHostEndianness.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscOutboundPacketStream.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscPacketListener.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscPrintReceivedElements.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscReceivedElements.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="oscpack\osc\OscTypes.h">
+      <Filter>oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="OSCListener.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Picture.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AllAnimationStates.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="AllAnimations.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="FlipAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFactory.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ImagesPool.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="LayoutState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="MirrorState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractiveState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeGameState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="HumanState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeoutAnimation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release\my-settings.txt">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+</Project>
