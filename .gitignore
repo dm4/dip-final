@@ -2,6 +2,7 @@
 tags
 final
 ZhengMeiXiang/x64/Release/*
+ipch/
 *.exe
 *.pdb
 *.sdf
