@@ -8,20 +8,20 @@
 using namespace std;
 using namespace cv;
 
-void HumanState::processTime(Director *director, const int64 &currentTickCount) {
+void GhostState::processTime(Director *director, const int64 &currentTickCount) {
 }
 
-void HumanState::processKeyEvent(Director *director, const int &key) {
+void GhostState::processKeyEvent(Director *director, const int &key) {
 }
 
-void HumanState::processMouseEvent(Director *director, const Point &mousePos)
+void GhostState::processMouseEvent(Director *director, const Point &mousePos)
 {
 #if SIMULATOR == 1
 	eyePosIndex = mousePos.y * numPicturesInPainting.width + mousePos.x;
 #endif
 }
 
- void HumanState::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
+ void GhostState::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
  {
  #if SIMULATOR == 0
  	Point2f eyePos(0, 0);
@@ -30,9 +30,9 @@ void HumanState::processMouseEvent(Director *director, const Point &mousePos)
  #endif
  }
 
-void HumanState::processAnimation(Director *director)
+void GhostState::processAnimation(Director *director)
 {
-	Mat molePhoto = imread("Pics/human_4.jpg");
+	Mat molePhoto = imread("Pics/ghost_7.jpg");
     Mat red = imread("Pics/red.png");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
@@ -95,17 +95,14 @@ void HumanState::processAnimation(Director *director)
 			else {
 				Score::score--;
 			}
-
-			hasMole[eyePosIndex] = 0;
-			Picture& scorePic = *director->getPictureAt(6);
-            setScore(scorePic, Score::score);
-
-			// next state
 			if (Score::score <= 0) {
-				director->setAnimationState(new GhostState);
+				director->setAnimationState(new EndGameState);
 				director->setStartTickCount();
 				return;
 			}
+			hasMole[eyePosIndex] = 0;
+			Picture& scorePic = *director->getPictureAt(6);
+            setScore(scorePic, Score::score);
 		}
 		picture.setAnimation(
 				FadeoutAnimationEnum,
@@ -116,7 +113,7 @@ void HumanState::processAnimation(Director *director)
 	}
 }
 
-void HumanState::setScore(Picture &picture, int score) {
+void GhostState::setScore(Picture &picture, int score) {
     IplImage *scoreImg = new IplImage(picture);
     cvCopy(black, scoreImg, NULL);
     CvFont font;

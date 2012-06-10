@@ -7,6 +7,4 @@ public:
     static int score;
 };
 
-int Score::score = 0;
-
 #endif

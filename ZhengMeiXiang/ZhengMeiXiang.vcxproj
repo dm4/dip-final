@@ -80,6 +80,7 @@
     <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="EndGameState2.cpp" />
     <ClCompile Include="FadeoutAnimation.cpp" />
+    <ClCompile Include="GhostState.cpp" />
     <ClCompile Include="HumanState.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="InteractiveState.cpp" />
@@ -97,6 +98,7 @@
     <ClCompile Include="oscpack\osc\OscReceivedElements.cpp" />
     <ClCompile Include="oscpack\osc\OscTypes.cpp" />
     <ClCompile Include="Picture.cpp" />
+    <ClCompile Include="Score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllAnimations.h" />
@@ -109,6 +111,7 @@
     <ClInclude Include="EndGameState.h" />
     <ClInclude Include="EndGameState2.h" />
     <ClInclude Include="FadeoutAnimation.h" />
+    <ClInclude Include="GhostState.h" />
     <ClInclude Include="HumanState.h" />
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="InteractiveState.h" />
@@ -133,7 +136,7 @@
     <ClInclude Include="oscpack\osc\OscReceivedElements.h" />
     <ClInclude Include="oscpack\osc\OscTypes.h" />
     <ClInclude Include="Picture.h" />
-    <ClInclude Include="score.h" />
+    <ClInclude Include="Score.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Release\my-settings.txt" />

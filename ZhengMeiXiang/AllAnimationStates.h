@@ -23,6 +23,7 @@
 #include "BeforeGameState.h"
 #include "IdleState.h"
 #include "HumanState.h"
+#include "GhostState.h"
 #include "EndGameState.h"
 #include "EndGameState2.h"
 

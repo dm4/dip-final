@@ -99,6 +99,12 @@
     <ClCompile Include="EndGameState2.cpp">
       <Filter>AnimationState</Filter>
     </ClCompile>
+    <ClCompile Include="GhostState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -200,11 +206,14 @@
     <ClInclude Include="EndGameState.h">
       <Filter>AnimationState</Filter>
     </ClInclude>
-    <ClInclude Include="score.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="EndGameState2.h">
       <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
