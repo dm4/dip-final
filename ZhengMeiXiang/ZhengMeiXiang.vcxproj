@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClCompile Include="BeforeGameState.cpp" />
     <ClCompile Include="Director.cpp" />
+    <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="FadeoutAnimation.cpp" />
     <ClCompile Include="HumanState.cpp" />
     <ClCompile Include="IdleState.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="AnimationState.h" />
     <ClInclude Include="BeforeGameState.h" />
     <ClInclude Include="Director.h" />
+    <ClInclude Include="EndGameState.h" />
     <ClInclude Include="FadeoutAnimation.h" />
     <ClInclude Include="HumanState.h" />
     <ClInclude Include="IdleState.h" />
@@ -129,6 +131,7 @@
     <ClInclude Include="oscpack\osc\OscReceivedElements.h" />
     <ClInclude Include="oscpack\osc\OscTypes.h" />
     <ClInclude Include="Picture.h" />
+    <ClInclude Include="score.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Release\my-settings.txt" />

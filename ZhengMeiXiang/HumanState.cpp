@@ -36,16 +36,14 @@ void HumanState::processAnimation(Director *director)
     Mat red = imread("Pics/red.png");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
-		Score s;
-		s.score = 5;
 		// 		director->playMusic("Musics/thunder.wav");
 		// 		director->takePhoto(photo);
 
         // set mole
 		for (int i = 0; i < 6; ++i) {
-			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(molePhoto);
-			hasMole[i] = 1;
+			//Picture& picture = *director->getPictureAt(i);
+			//picture.setContent(molePhoto);
+			hasMole[i] = 0;
 		}
 
         // set other pic
@@ -53,7 +51,7 @@ void HumanState::processAnimation(Director *director)
 			Picture& picture = *director->getPictureAt(i);
 			picture.setContent(blue);
         }
-		srand(time(NULL));
+		srand((unsigned int)time(NULL));
 		isInitialized = true;
 
         // init black for pic 6
@@ -63,9 +61,9 @@ void HumanState::processAnimation(Director *director)
 		black = cvCloneImage(new IplImage(picture));
 
         // init score
-        (new Score())->score = 0;
+        Score::score = 5;
 		Picture& scorePic = *director->getPictureAt(6);
-        setScore(scorePic, 0);
+        setScore(scorePic, Score::score);
 	}
 
     // reborn mole
@@ -91,27 +89,26 @@ void HumanState::processAnimation(Director *director)
 	picture.setFocus(true);
 	if (eyePosIndex < 6 && picture.getAnimation()->animationEnded()) {
 		if (hasMole[eyePosIndex]) {
-			Score s;
 			if (hasMole[eyePosIndex] == 1) {
-				s.score++;
+				Score::score++;
 			}
 			else {
-				s.score--;
+				Score::score--;
 			}
-			if (s.score <= 0) {
-				printf("Game Over\n");
+			if (Score::score <= 0) {
+				director->setAnimationState(new EndGameState);
+				director->setStartTickCount();
+				return;
 			}
 			hasMole[eyePosIndex] = 0;
 			Picture& scorePic = *director->getPictureAt(6);
-            setScore(scorePic, s.score);
+            setScore(scorePic, Score::score);
 		}
 		picture.setAnimation(
 				FadeoutAnimationEnum,
 				picture,
 				photo
 				);
-		FadeoutAnimation *ani = static_cast<FadeoutAnimation *>(picture.getAnimation());
-		ani->setCanReverse(true);
 		picture.setEnableAnimationTime(director->getCurrentTime());
 	}
 }

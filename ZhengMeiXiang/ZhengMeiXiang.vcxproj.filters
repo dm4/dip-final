@@ -93,6 +93,9 @@
     <ClCompile Include="FadeoutAnimation.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
+    <ClCompile Include="EndGameState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -190,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="FadeoutAnimation.h">
       <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameState.h">
+      <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,8 +18,11 @@
 #include "LayoutState.h"
 #include "MirrorState.h"
 #include "InteractiveState.h"
+
+// by team 10
 #include "BeforeGameState.h"
 #include "IdleState.h"
 #include "HumanState.h"
+#include "EndGameState.h"
 
 #endif // ALL_ANIMATION_STATES_H
