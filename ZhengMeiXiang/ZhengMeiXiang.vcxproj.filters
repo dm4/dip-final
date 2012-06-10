@@ -96,6 +96,9 @@
     <ClCompile Include="EndGameState.cpp">
       <Filter>AnimationState</Filter>
     </ClCompile>
+    <ClCompile Include="EndGameState2.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="score.h">
       <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameState2.h">
+      <Filter>AnimationState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

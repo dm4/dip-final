@@ -78,6 +78,7 @@
     <ClCompile Include="BeforeGameState.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="EndGameState.cpp" />
+    <ClCompile Include="EndGameState2.cpp" />
     <ClCompile Include="FadeoutAnimation.cpp" />
     <ClCompile Include="HumanState.cpp" />
     <ClCompile Include="IdleState.cpp" />
@@ -106,6 +107,7 @@
     <ClInclude Include="BeforeGameState.h" />
     <ClInclude Include="Director.h" />
     <ClInclude Include="EndGameState.h" />
+    <ClInclude Include="EndGameState2.h" />
     <ClInclude Include="FadeoutAnimation.h" />
     <ClInclude Include="HumanState.h" />
     <ClInclude Include="IdleState.h" />

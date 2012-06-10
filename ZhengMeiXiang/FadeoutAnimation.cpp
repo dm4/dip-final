@@ -18,12 +18,14 @@ void FadeoutAnimation::play(Picture &picture) {
 		for (int i = 0; i < img->height; i++) {
 			for (int j = 0; j < img->width; j++) {
 				for (int k = 0; k < channel; k++) {
-					img->imageData[i*step + j*channel + k] = (uchar)img->imageData[i*step + j*channel + k] * pow(0.9, a);
+					//img->imageData[i*step + j*channel + k] = (uchar)img->imageData[i*step + j*channel + k] * pow(0.95, a);
+					img->imageData[i*step + j*channel + k] = (uchar)img->imageData[i*step + j*channel + k] * (1 - 0.02 * a);
 				}
 			}
 		}
 
-		if(pow(0.9, a) < 0.1){
+		if ((1 - 0.02 * a) < 0.1) {
+		//if(pow(0.95, a) < 0.1){
             setEnd(true);
 		}
 

@@ -24,5 +24,6 @@
 #include "IdleState.h"
 #include "HumanState.h"
 #include "EndGameState.h"
+#include "EndGameState2.h"
 
 #endif // ALL_ANIMATION_STATES_H

@@ -6,22 +6,22 @@
 using namespace std;
 using namespace cv;
 
-void EndGameState::processTime(Director *director, const int64 &currentTickCount)
+void EndGameState2::processTime(Director *director, const int64 &currentTickCount)
 {
 }
 
-void EndGameState::processKeyEvent(Director *director, const int &key)
+void EndGameState2::processKeyEvent(Director *director, const int &key)
 {
 }
 
-void EndGameState::processMouseEvent(Director *director, const Point &mousePos)
+void EndGameState2::processMouseEvent(Director *director, const Point &mousePos)
 {
 #if SIMULATOR == 1
 	eyePosIndex = mousePos.y * numPicturesInPainting.width + mousePos.x;
 #endif
 }
 
- void EndGameState::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
+ void EndGameState2::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
  {
  #if SIMULATOR == 0
  	Point2f eyePos(0, 0);
@@ -30,11 +30,11 @@ void EndGameState::processMouseEvent(Director *director, const Point &mousePos)
  #endif
  }
 
-void EndGameState::processAnimation(Director *director) {
+void EndGameState2::processAnimation(Director *director) {
 	if (!isInitialized) {
+		showText(*director->getPictureAt(4));
 		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
-			picture.setFocus(false);
 			picture.setAnimation(
 				FadeoutAnimationEnum,
 				picture,
@@ -56,7 +56,15 @@ void EndGameState::processAnimation(Director *director) {
         }
     }
     if (isDone) {
-		director->setAnimationState(new EndGameState2);
+		director->setAnimationState(new IdleState);
         director->setStartTickCount();
     }
+}
+
+void EndGameState2::showText(Picture& picture) {
+	Rect frame = picture.getFrame();
+	picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
+	CvFont font;
+	cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 1.0, 1.0, 0, 1, CV_AA);
+	cvPutText(new IplImage(picture), "GameOver", cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
 }
