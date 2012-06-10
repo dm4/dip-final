@@ -78,7 +78,7 @@ void BeforeGameState::processAnimation(Director *director) {
         }
     }
     if (isDone) {
-        director->setAnimationState(new FadeinState);
+        director->setAnimationState(new HumanState);
         director->setStartTickCount();
     }
 }

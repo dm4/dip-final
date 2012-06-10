@@ -1,12 +1,9 @@
 OBJS = Director.o \
 	   IdleState.o \
 	   BeforeGameState.o \
-	   FadeinState.o \
+	   HumanState.o \
 	   FadeoutAnimation.o \
 	   FlipAnimation.o \
-	   InitState.o \
-	   LayoutState.o \
-	   MirrorState.o \
 	   Picture.o \
 	   main.o
 
