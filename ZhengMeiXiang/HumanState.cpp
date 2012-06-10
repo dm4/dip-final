@@ -36,6 +36,8 @@ void HumanState::processAnimation(Director *director)
     Mat red = imread("Pics/red.png");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
+		Score s;
+		s.score = 5;
 		// 		director->playMusic("Musics/thunder.wav");
 		// 		director->takePhoto(photo);
 
@@ -43,7 +45,7 @@ void HumanState::processAnimation(Director *director)
 		for (int i = 0; i < 6; ++i) {
 			Picture& picture = *director->getPictureAt(i);
 			picture.setContent(molePhoto);
-			hasMole[i] = true;
+			hasMole[i] = 1;
 		}
 
         // set other pic
@@ -67,14 +69,21 @@ void HumanState::processAnimation(Director *director)
 	}
 
     // reborn mole
-	if( rand()%10 > 4){
+	if(rand() % 10 > 4){
 		int mole = rand() % 6;
+		bool canHit = (rand() % 100 > 70) ? true : false;
         Picture& molePic = *director->getPictureAt(mole);
-        if (molePic.getAnimation()->animationEnded()) {
-            molePic.setContent(molePhoto);
+        if (hasMole[mole] == 0 && molePic.getAnimation()->animationEnded()) {
+			if (canHit) {
+				molePic.setContent(molePhoto);
+				hasMole[mole] = 1;
+			}
+			else {
+				molePic.setContent(red);
+				hasMole[mole] = 2;
+			}
             molePic.setAnimation(IdleAnimationEnum, cv::noArray(), cv::noArray());
             molePic.setEnableAnimationTime(director->getCurrentTime());
-            hasMole[mole] = true;
         }
 	}
 
@@ -83,11 +92,18 @@ void HumanState::processAnimation(Director *director)
 	if (eyePosIndex < 6 && picture.getAnimation()->animationEnded()) {
 		if (hasMole[eyePosIndex]) {
 			Score s;
-			s.score++;
-			hasMole[eyePosIndex] = false;
+			if (hasMole[eyePosIndex] == 1) {
+				s.score++;
+			}
+			else {
+				s.score--;
+			}
+			if (s.score <= 0) {
+				printf("Game Over\n");
+			}
+			hasMole[eyePosIndex] = 0;
 			Picture& scorePic = *director->getPictureAt(6);
             setScore(scorePic, s.score);
-// 			scorePic.setContent(scoreImg);
 		}
 		picture.setAnimation(
 				FadeoutAnimationEnum,

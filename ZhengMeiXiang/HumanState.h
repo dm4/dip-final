@@ -22,7 +22,7 @@ class HumanState: public AnimationState
 		int eyePosIndex;
 		cv::Mat photo;
 		bool isInitialized;
-		bool hasMole[44];
+		int hasMole[6];
 		IplImage* black;
 };
 
