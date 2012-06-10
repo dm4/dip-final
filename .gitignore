@@ -5,4 +5,5 @@ ZhengMeiXiang/x64/Release/*
 *.exe
 *.pdb
 *.sdf
+*.opensdf
 *.suo
