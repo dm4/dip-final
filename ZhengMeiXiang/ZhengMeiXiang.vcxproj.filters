@@ -105,6 +105,9 @@
     <ClCompile Include="Score.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
+    <ClCompile Include="SkyState.cpp">
+      <Filter>AnimationState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyState.h">
+      <Filter>AnimationState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -99,6 +99,7 @@
     <ClCompile Include="oscpack\osc\OscTypes.cpp" />
     <ClCompile Include="Picture.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="SkyState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllAnimations.h" />
@@ -137,6 +138,7 @@
     <ClInclude Include="oscpack\osc\OscTypes.h" />
     <ClInclude Include="Picture.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="SkyState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Release\my-settings.txt" />

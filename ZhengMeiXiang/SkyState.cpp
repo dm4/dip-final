@@ -8,20 +8,20 @@
 using namespace std;
 using namespace cv;
 
-void HumanState::processTime(Director *director, const int64 &currentTickCount) {
+void SkyState::processTime(Director *director, const int64 &currentTickCount) {
 }
 
-void HumanState::processKeyEvent(Director *director, const int &key) {
+void SkyState::processKeyEvent(Director *director, const int &key) {
 }
 
-void HumanState::processMouseEvent(Director *director, const Point &mousePos)
+void SkyState::processMouseEvent(Director *director, const Point &mousePos)
 {
 #if SIMULATOR == 1
 	eyePosIndex = mousePos.y * numPicturesInPainting.width + mousePos.x;
 #endif
 }
 
- void HumanState::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
+ void SkyState::processOSC(Director *director, const map<string, osc::ReceivedMessage *> &messageMap)
  {
  #if SIMULATOR == 0
  	Point2f eyePos(0, 0);
@@ -30,9 +30,9 @@ void HumanState::processMouseEvent(Director *director, const Point &mousePos)
  #endif
  }
 
-void HumanState::processAnimation(Director *director)
+void SkyState::processAnimation(Director *director)
 {
-	Mat molePhoto = imread("Pics/human_4.jpg");
+	Mat molePhoto = imread("Pics/god_6.jpg");
     Mat red = imread("Pics/red.png");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
@@ -100,12 +100,12 @@ void HumanState::processAnimation(Director *director)
 
 			// next state
 			if (Score::score <= 0) {
-				director->setAnimationState(new GhostState);
+				director->setAnimationState(new HumanState);
 				director->setStartTickCount();
 				return;
 			}
 			else if (Score::score >= 10) {
-				director->setAnimationState(new SkyState);
+				director->setAnimationState(new EndGameState);
 				director->setStartTickCount();
 				return;
 			}
@@ -119,7 +119,7 @@ void HumanState::processAnimation(Director *director)
 	}
 }
 
-void HumanState::setScore(Picture &picture, int score) {
+void SkyState::setScore(Picture &picture, int score) {
     IplImage *scoreImg = new IplImage(picture);
     cvCopy(black, scoreImg, NULL);
     CvFont font;

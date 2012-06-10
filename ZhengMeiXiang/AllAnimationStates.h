@@ -24,6 +24,7 @@
 #include "IdleState.h"
 #include "HumanState.h"
 #include "GhostState.h"
+#include "SkyState.h"
 #include "EndGameState.h"
 #include "EndGameState2.h"
 

@@ -69,7 +69,7 @@ void GhostState::processAnimation(Director *director)
     // reborn mole
 	if(rand() % 10 > 4){
 		int mole = rand() % 6;
-		bool canHit = (rand() % 100 > 70) ? true : false;
+		bool canHit = (rand() % 100 > 50) ? true : false;
         Picture& molePic = *director->getPictureAt(mole);
         if (hasMole[mole] == 0 && molePic.getAnimation()->animationEnded()) {
 			if (canHit) {
@@ -95,14 +95,22 @@ void GhostState::processAnimation(Director *director)
 			else {
 				Score::score--;
 			}
+
+			hasMole[eyePosIndex] = 0;
+			Picture& scorePic = *director->getPictureAt(6);
+            setScore(scorePic, Score::score);
+
+			// next state
 			if (Score::score <= 0) {
 				director->setAnimationState(new EndGameState);
 				director->setStartTickCount();
 				return;
 			}
-			hasMole[eyePosIndex] = 0;
-			Picture& scorePic = *director->getPictureAt(6);
-            setScore(scorePic, Score::score);
+			else if (Score::score >= 0) {
+				director->setAnimationState(new HumanState);
+				director->setStartTickCount();
+				return;
+			}
 		}
 		picture.setAnimation(
 				FadeoutAnimationEnum,
