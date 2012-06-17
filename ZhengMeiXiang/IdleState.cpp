@@ -71,6 +71,7 @@ void IdleState::processAnimation(Director *director)
 		// set to black
 		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
+			picture.setFocus(false);
 			picture.setContent(Mat::zeros(
 				picture.getFrame().width,
 				picture.getFrame().height,
