@@ -33,7 +33,7 @@ void GhostState::processMouseEvent(Director *director, const Point &mousePos)
 void GhostState::processAnimation(Director *director)
 {
 	Mat molePhoto = imread("Pics/ghost_7.jpg");
-    Mat red = imread("Pics/red.png");
+    Mat red = imread("user_ghost.jpg");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
 		// 		director->playMusic("Musics/thunder.wav");
@@ -49,7 +49,8 @@ void GhostState::processAnimation(Director *director)
         // set other pic
         for (int i = 7; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(blue);
+			Rect frame = picture.getFrame();
+            picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
         }
 		srand((unsigned int)time(NULL));
 		isInitialized = true;
