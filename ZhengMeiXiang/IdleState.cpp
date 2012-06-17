@@ -84,7 +84,7 @@ void IdleState::processAnimation(Director *director)
 		}
 		Mat painting = director->getPainting();
 		director->pictures.clear();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
 			Rect rect;
 			ifs >> rect.x >> rect.y >> rect.width >> rect.height;
@@ -97,7 +97,7 @@ void IdleState::processAnimation(Director *director)
 		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
 			char filename[30];
-			sprintf(filename, "Words/1/%d.jpg", i + 1);
+			sprintf(filename, "Words/%d/%d.jpg", dao + 1, i + 1);
 			Mat word = imread(filename);
 			picture.setContent(word);
 		}
@@ -114,8 +114,42 @@ void IdleState::processAnimation(Director *director)
 			picture.setEnableAnimationTime(director->getCurrentTime());
 		}
 
-		// set fadein animation
 		director->setCanRecord(false);
 		isInitialized = true;
+    }
+
+	// check all moles done
+    bool isDone = true;
+    for (int i = 0; i < numPhotos; i++) {
+        Picture& picture = *director->getPictureAt(i);
+        if (!picture.getAnimation()->animationEnded()) {
+            isDone = false;
+            break;
+        }
+    }
+    if (isDone) {
+		dao++;
+		dao %= 6;
+
+		// set dao image
+		for (int i = 0; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			char filename[30];
+			sprintf(filename, "Words/%d/%d.jpg", dao + 1, i + 1);
+			Mat word = imread(filename);
+			picture.setContent(word);
+		}
+
+		// set first fadein line animation
+		for (int i = 0; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			IplImage *start = cvCloneImage(new IplImage(picture));
+			picture.setAnimation(
+				FadeinAnimationEnum,
+				start,
+				NULL
+			);
+			picture.setEnableAnimationTime(director->getCurrentTime());
+		}
     }
 }

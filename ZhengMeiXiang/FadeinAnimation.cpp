@@ -15,18 +15,15 @@ void FadeinAnimation::play(Picture &picture) {
 
 		int step = img->widthStep;
 		int channel = img->nChannels;
-		cout << "channel" << channel << endl;
 
 		a++;
 		if (a > 1/FADEIN_COEFF)
 			a = 1/FADEIN_COEFF;
-		cout << a << endl;
 
 		for (int i = 0; i < img->height; i++) {
 			for (int j = 0; j < img->width; j++) {
 				for (int k = 0; k < channel; k++) {
-					//img->imageData[i*step + j*channel + k] = (uchar)img->imageData[i*step + j*channel + k] * pow(0.95, a);
-					img->imageData[i*step + j*channel + k] = (uchar)(source->imageData[i*step + j*channel + k]) * (0.02 * a);
+					img->imageData[i*step + j*channel + k] = (uchar)(source->imageData[i*step + j*channel + k]) * (FADEIN_COEFF * a);
 				}
 			}
 		}
