@@ -336,7 +336,8 @@ int Director::get1DEyePos(const Point2f &normalEyePos) const
 		}
 	}
 
-	return index;
+	//return index;
+	return 6;
 }
 
 Point Director::get2DEyePos(const Point2f &normalEyePos) const
