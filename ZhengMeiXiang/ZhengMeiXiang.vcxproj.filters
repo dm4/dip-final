@@ -108,6 +108,9 @@
     <ClCompile Include="SkyState.cpp">
       <Filter>AnimationState</Filter>
     </ClCompile>
+    <ClCompile Include="FadeinAnimation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Director.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="SkyState.h">
       <Filter>AnimationState</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeinAnimation.h">
+      <Filter>Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,8 @@ tags
 final
 ZhengMeiXiang/x64/Release/*
 ipch/
-*.exe
+ZhengMeiXiang.exe
+user.jpg
 *.pdb
 *.sdf
 *.opensdf

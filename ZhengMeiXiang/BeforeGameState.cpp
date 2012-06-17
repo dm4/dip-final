@@ -32,15 +32,17 @@ void BeforeGameState::processMouseEvent(Director *director, const Point &mousePo
  }
 
 void BeforeGameState::processAnimation(Director *director) {
-	if (!isInitialized) {
+    if (!isInitialized) {
 		if (!director->getCanRecord()) {
 			director->setCanRecord(true);
 			return;
-		}
-		Mat molePhoto = imread("Pics/Diglett.png");
-        for (int i = 0; i < 6; i++) {
-			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(molePhoto);
+		};
+		for (int i = 0; i < 6; i++) {
+			char filename[20];
+			int pic = (i == 4 || i == 5) ? 18 : 17;
+			sprintf(filename, "Words/%d/%d.jpg", i + 1, pic);
+			Picture &picture = *director->getPictureAt(i);
+			picture.setContent(imread(filename));
 			hasMole[i] = true;
         }
         for (int i = 6; i < 14; i++) {

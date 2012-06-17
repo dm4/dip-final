@@ -10,6 +10,7 @@
 #include "IdleAnimation.h"
 #include "FlipAnimation.h"
 #include "FadeoutAnimation.h"
+#include "FadeinAnimation.h"
 
 /*!
  * \brief
@@ -22,7 +23,8 @@
 typedef enum AnimationEnum {
 	IdleAnimationEnum = 0,
 	FlipAnimationEnum = 1,
-	FadeoutAnimationEnum = 2
+	FadeoutAnimationEnum = 2,
+	FadeinAnimationEnum = 3
 } AnimationEnum;
 
 #endif // ALL_ANIMATIONS_H

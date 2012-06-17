@@ -79,6 +79,7 @@
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="EndGameState2.cpp" />
+    <ClCompile Include="FadeinAnimation.cpp" />
     <ClCompile Include="FadeoutAnimation.cpp" />
     <ClCompile Include="GhostState.cpp" />
     <ClCompile Include="HumanState.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Director.h" />
     <ClInclude Include="EndGameState.h" />
     <ClInclude Include="EndGameState2.h" />
+    <ClInclude Include="FadeinAnimation.h" />
     <ClInclude Include="FadeoutAnimation.h" />
     <ClInclude Include="GhostState.h" />
     <ClInclude Include="HumanState.h" />
