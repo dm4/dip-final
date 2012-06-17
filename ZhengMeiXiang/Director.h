@@ -153,6 +153,10 @@ public:
 		PlaySound(musicPath.c_str(), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	}
 
+	inline void playSound(const std::string &musicPath) const {
+		PlaySound(musicPath.c_str(), NULL, SND_FILENAME | SND_ASYNC | SND_SYNC);
+	}
+
 	/*!
 	*  \brief A getter for interactive duration.
 	*  \return duration (sec).

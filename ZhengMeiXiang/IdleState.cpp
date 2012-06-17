@@ -63,7 +63,25 @@ void IdleState::processMouseEvent(Director *director, const Point &mousePos)
 
 void IdleState::processAnimation(Director *director)
 {
-    if (!isInitialized) {
+	if (!isInitialized) {
+		if (needToPlayDefaultMusic) {
+			
+			MCIDEVICEID  dev[20];
+			MCI_OPEN_PARMS mciOpen;
+			MCI_PLAY_PARMS mciPlay;
+			{
+				mciOpen.lpstrElementName="Musics/sound 52.mp3";
+				if(mciSendCommand(NULL,MCI_OPEN, MCI_OPEN_ELEMENT ,
+					(DWORD)&mciOpen)==0)
+					dev[0]=mciOpen.wDeviceID;
+				else
+					mciOpen.wDeviceID=dev[0];
+
+				mciPlay.dwFrom = 0;
+				mciSendCommand(mciOpen.wDeviceID,MCI_PLAY,MCI_NOTIFY | MCI_FROM,(DWORD)&mciPlay);
+			}
+			needToPlayDefaultMusic = false;
+		}
 		// init state
 		dao = 0;
 		isFadein = true;

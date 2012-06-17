@@ -36,9 +36,6 @@ void GhostState::processAnimation(Director *director)
     Mat red = imread("user_ghost.jpg");
     Mat blue = imread("Pics/blue.png");
 	if (!isInitialized) {
-		// 		director->playMusic("Musics/thunder.wav");
-		// 		director->takePhoto(photo);
-
         // set mole
 		for (int i = 0; i < 6; ++i) {
 			//Picture& picture = *director->getPictureAt(i);
@@ -113,6 +110,7 @@ void GhostState::processAnimation(Director *director)
 				return;
 			}
 		}
+		director->playSound("Musics/thunder.wav");
 		picture.setAnimation(
 				FadeoutAnimationEnum,
 				picture,
