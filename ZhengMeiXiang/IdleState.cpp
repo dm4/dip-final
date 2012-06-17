@@ -70,7 +70,7 @@ void IdleState::processAnimation(Director *director)
 			MCI_OPEN_PARMS mciOpen;
 			MCI_PLAY_PARMS mciPlay;
 			{
-				mciOpen.lpstrElementName="Musics/sound 52.mp3";
+				mciOpen.lpstrElementName="Musics/six_dao_music.mp3";
 				if(mciSendCommand(NULL,MCI_OPEN, MCI_OPEN_ELEMENT ,
 					(DWORD)&mciOpen)==0)
 					dev[0]=mciOpen.wDeviceID;
