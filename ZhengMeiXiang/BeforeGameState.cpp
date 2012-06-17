@@ -97,6 +97,14 @@ void BeforeGameState::processAnimation(Director *director) {
 		cvSaveImage("user.jpg",new IplImage(photo));
 		system("god user.jpg user_god.jpg");
 		system("ghost user.jpg user_ghost.jpg");
+
+
+		for (int i = 0; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			Rect frame = picture.getFrame();
+            picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
+        }
+
         director->setAnimationState(new HumanState);
         director->setStartTickCount();
     }
