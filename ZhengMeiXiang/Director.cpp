@@ -219,7 +219,7 @@ void Director::processGlobalOSC()
 		bool interactionState = false;
 		oscArgStream >>  interactionState >> EndMessage;
 		if (!interactionState) {
-			setAnimationState(new InitState);
+			setAnimationState(new IdleState);
 			oscListener->clearMessageWithType("/interactionState");
 		}
 	}
