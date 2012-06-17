@@ -36,11 +36,13 @@ void BeforeGameState::processAnimation(Director *director) {
 		if (!director->getCanRecord()) {
 			director->setCanRecord(true);
 			return;
-		}
-		Mat sky = imread("Words/1/17.jpg");
-        for (int i = 0; i < 6; i++) {
-			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(sky);
+		};
+		for (int i = 0; i < 6; i++) {
+			char filename[20];
+			int pic = (i == 4 || i == 5) ? 18 : 17;
+			sprintf(filename, "Words/%d/%d.jpg", i + 1, pic);
+			Picture &picture = *director->getPictureAt(i);
+			picture.setContent(imread(filename));
 			hasMole[i] = true;
         }
         for (int i = 6; i < 14; i++) {
