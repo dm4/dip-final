@@ -66,6 +66,7 @@ void IdleState::processAnimation(Director *director)
     if (!isInitialized) {
 		// init state
 		dao = 0;
+		isFadein = true;
 
 		// set to black
 		for (int i = 0; i < numPhotos; i++) {
@@ -131,25 +132,43 @@ void IdleState::processAnimation(Director *director)
 		dao++;
 		dao %= 6;
 
-		// set dao image
-		for (int i = 0; i < numPhotos; i++) {
-			Picture& picture = *director->getPictureAt(i);
-			char filename[30];
-			sprintf(filename, "Words/%d/%d.jpg", dao + 1, i + 1);
-			Mat word = imread(filename);
-			picture.setContent(word);
+		if (isFadein) {
+			// set fadeout animation
+			for (int i = 0; i < numPhotos; i++) {
+				Picture& picture = *director->getPictureAt(i);
+				IplImage *start = cvCloneImage(new IplImage(picture));
+				picture.setAnimation(
+					FadeoutAnimationEnum,
+					start,
+					NULL
+				);
+				picture.setEnableAnimationTime(director->getCurrentTime());
+			}
+			isFadein = false;
 		}
+		else {
+			// set dao image
+			for (int i = 0; i < numPhotos; i++) {
+				Picture& picture = *director->getPictureAt(i);
+				char filename[30];
+				sprintf(filename, "Words/%d/%d.jpg", dao + 1, i + 1);
+				Mat word = imread(filename);
+				picture.setContent(word);
+			}
 
-		// set first fadein line animation
-		for (int i = 0; i < numPhotos; i++) {
-			Picture& picture = *director->getPictureAt(i);
-			IplImage *start = cvCloneImage(new IplImage(picture));
-			picture.setAnimation(
-				FadeinAnimationEnum,
-				start,
-				NULL
-			);
-			picture.setEnableAnimationTime(director->getCurrentTime());
+			// set first fadein animation
+			for (int i = 0; i < numPhotos; i++) {
+				Picture& picture = *director->getPictureAt(i);
+				IplImage *start = cvCloneImage(new IplImage(picture));
+				picture.setAnimation(
+					FadeinAnimationEnum,
+					start,
+					NULL
+				);
+				picture.setEnableAnimationTime(director->getCurrentTime());
+			}
+
+			isFadein = true;
 		}
     }
 }
