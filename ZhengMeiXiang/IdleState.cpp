@@ -66,27 +66,37 @@ void IdleState::processAnimation(Director *director)
     if (!isInitialized) {
 		Mat painting = director->getPainting();
 
+		// set to black
+		for (int i = 0; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			picture.setContent(Mat::zeros(
+				picture.getFrame().width,
+				picture.getFrame().height,
+				picture.getType()
+			));
+		}
+
 		// Read setting
 		ifstream ifs("idle-settings.txt");
 		if (ifs.bad()) {
 			cerr << "Read the setting file: idle-settings.txt error" << endl;
 		}
-		int numRead = 0;
-		//while(ifs.good() && numRead < numPhotos) {
 		director->pictures.clear();
 		for (int i = 0; i < 20; i++) {
 			Picture& picture = *director->getPictureAt(i);
 			Rect rect;
 			ifs >> rect.x >> rect.y >> rect.width >> rect.height;
-			printf("test %d: %d, %d, %d, %d\n", i, rect.x, rect.y, rect.width, rect.height);
+			//printf("test %d: %d, %d, %d, %d\n", i, rect.x, rect.y, rect.width, rect.height);
 			//picture.setFrame(painting(rect), rect);
 			director->pictures.push_back(Picture(painting(rect), rect));
-			++numRead;
 		}
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(Mat(picture.size(), picture.getType(), Scalar(255, 0, 0, 0)));
+			char filename[30];
+			sprintf(filename, "Words/1/%d.jpg", i + 1);
+			Mat word = imread(filename);
+			picture.setContent(word);
 		}
 
 		director->setCanRecord(false);
