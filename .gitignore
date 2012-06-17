@@ -4,6 +4,7 @@ final
 ZhengMeiXiang/x64/Release/*
 ipch/
 ZhengMeiXiang.exe
+user.jpg
 *.pdb
 *.sdf
 *.opensdf
