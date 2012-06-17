@@ -33,10 +33,10 @@ void BeforeGameState::processMouseEvent(Director *director, const Point &mousePo
 
 void BeforeGameState::processAnimation(Director *director) {
     if (!isInitialized) {
-        Mat molePhoto = imread("Pics/Diglett.png");
+        Mat sky = imread("Words/1/17.jpg");
         for (int i = 0; i < 6; i++) {
 			Picture& picture = *director->getPictureAt(i);
-			picture.setContent(molePhoto);
+			picture.setContent(sky);
 			hasMole[i] = true;
         }
         for (int i = 6; i < 14; i++) {

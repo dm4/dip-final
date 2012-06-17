@@ -129,9 +129,6 @@ void IdleState::processAnimation(Director *director)
         }
     }
     if (isDone) {
-		dao++;
-		dao %= 6;
-
 		if (isFadein) {
 			// set fadeout animation
 			for (int i = 0; i < numPhotos; i++) {
@@ -147,6 +144,8 @@ void IdleState::processAnimation(Director *director)
 			isFadein = false;
 		}
 		else {
+			dao++;
+			dao %= 6;
 			// set dao image
 			for (int i = 0; i < numPhotos; i++) {
 				Picture& picture = *director->getPictureAt(i);
