@@ -12,6 +12,12 @@ void IdleState::processTime(Director *director, const int64 &currentTickCount)
 
 void IdleState::processKeyEvent(Director *director, const int &key) {
     if (key == 'a') {
+		// restore frame
+		Mat painting = director->getPainting();
+		Picture& picture = *director->getPictureAt(0);
+		picture.setFrame(painting(originFrame), originFrame);
+
+		// next state
         director->setAnimationState(new BeforeGameState);
         director->setStartTickCount();
     }
@@ -33,7 +39,13 @@ void IdleState::processMouseEvent(Director *director, const Point &mousePos)
  		bool interactionState = false;
  		oscArgStream >>  interactionState >> osc::EndMessage;
  		if (interactionState) {
- 			director->setAnimationState(new BeforeGameState);
+			// restore frame
+			Mat painting = director->getPainting();
+			Picture& picture = *director->getPictureAt(0);
+			picture.setFrame(painting(originFrame), originFrame);
+
+			// next state
+			director->setAnimationState(new BeforeGameState);
  			director->setStartTickCount();
  			director->getOSCListener()->clearMessageWithType("/interactionState");
  		}
@@ -43,14 +55,26 @@ void IdleState::processMouseEvent(Director *director, const Point &mousePos)
 void IdleState::processAnimation(Director *director)
 {
     if (!isInitialized) {
-		Picture& picture = *director->getPictureAt(4);
-		Rect frame = picture.getFrame();
-		picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
+		Mat painting = director->getPainting();
+		Picture& picture = *director->getPictureAt(0);
+
+		// save and set frame
+		originFrame = picture.getFrame();
+		bigFrame.x = 0;
+		bigFrame.y = 0;
+		bigFrame.width = 300;
+		bigFrame.height = 300;
+		picture.setFrame(painting(bigFrame), bigFrame);
+
+		// set white color
+		picture.setContent(Mat(picture.size(), picture.getType(), Scalar(255, 255, 255)));
+
+		// add text
         CvFont font;
         cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 1.0, 1.0, 0, 1, CV_AA);
         cvPutText(new IplImage(picture), "Sit to Start", cvPoint(10, 130), &font, cvScalar(255, 255, 255, 0));
-        isInitialized = true;
-    }
 
-	director->setCanRecord(false);
+		director->setCanRecord(false);
+		isInitialized = true;
+    }
 }

@@ -19,6 +19,8 @@ public:
 private:
 	bool needToPlayDefaultMusic;
     bool isInitialized;
+	cv::Rect bigFrame;
+	cv::Rect originFrame;
 };
 
 #endif // IDLE_STATE_H

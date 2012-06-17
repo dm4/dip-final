@@ -120,12 +120,12 @@ void LayoutState::processAnimation(Director *director)
 	if (!director->getCanRecord())
 		director->setCanRecord(false);
 
-	ImagesPool *imagesPool = director->getImagesPool();
+	//ImagesPool *imagesPool = director->getImagesPool();
 	for (int i = 0; i < numPhotos; ++i) {
 		Picture& picture = *director->getPictureAt(i);
-		if (i == selectIndex)
-			picture.setContent(imagesPool->starPhotos[i]);
-		else
+		//if (i == selectIndex)
+		//	picture.setContent(imagesPool->starPhotos[i]);
+		//else
 			picture.setContent(Mat(picture.size(), picture.getType(), Scalar(255, 255, 255)));
 	}
 }
