@@ -40,6 +40,9 @@ public:
 		case FadeoutAnimationEnum:
 			return new FadeoutAnimation(startImg.getMat(), endImg.getMat());
 			break;
+		case FadeinAnimationEnum:
+			return new FadeinAnimation(startImg.getMat(), endImg.getMat());
+			break;
 		default:
 			cerr << "AnimationFactory cannot create the Animation: " << animationEnum << endl;
 			return new IdleAnimation(startImg.getMat(), endImg.getMat());

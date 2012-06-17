@@ -64,7 +64,8 @@ void IdleState::processMouseEvent(Director *director, const Point &mousePos)
 void IdleState::processAnimation(Director *director)
 {
     if (!isInitialized) {
-		Mat painting = director->getPainting();
+		// init state
+		dao = 0;
 
 		// set to black
 		for (int i = 0; i < numPhotos; i++) {
@@ -81,6 +82,7 @@ void IdleState::processAnimation(Director *director)
 		if (ifs.bad()) {
 			cerr << "Read the setting file: idle-settings.txt error" << endl;
 		}
+		Mat painting = director->getPainting();
 		director->pictures.clear();
 		for (int i = 0; i < 20; i++) {
 			Picture& picture = *director->getPictureAt(i);
@@ -91,6 +93,7 @@ void IdleState::processAnimation(Director *director)
 			director->pictures.push_back(Picture(painting(rect), rect));
 		}
 
+		// set first dao image
 		for (int i = 0; i < numPhotos; i++) {
 			Picture& picture = *director->getPictureAt(i);
 			char filename[30];
@@ -99,6 +102,19 @@ void IdleState::processAnimation(Director *director)
 			picture.setContent(word);
 		}
 
+		// set first fadein line animation
+		for (int i = 0; i < numPhotos; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			IplImage *start = cvCloneImage(new IplImage(picture));
+			picture.setAnimation(
+				FadeinAnimationEnum,
+				start,
+				NULL
+			);
+			picture.setEnableAnimationTime(director->getCurrentTime());
+		}
+
+		// set fadein animation
 		director->setCanRecord(false);
 		isInitialized = true;
     }

@@ -21,6 +21,8 @@ private:
     bool isInitialized;
 	cv::Rect bigFrame;
 	cv::Rect originFrame;
+	int dao;
+	int line;
 };
 
 #endif // IDLE_STATE_H
