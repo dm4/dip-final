@@ -41,6 +41,9 @@ void InteractiveState::processAnimation(Director *director)
 	if (photo.empty()) {
 		director->playMusic("Musics/thunder.wav");
 		director->takePhoto(photo);
+		cvSaveImage("user.jpg",new IplImage(photo));
+		system("god user.jpg user_god.jpg");
+		system("ghost user.jpg user_ghost.jpg");
 		
 		for (int i = 0; i < numPhotos; ++i) {
 			Picture& picture = *director->getPictureAt(i);

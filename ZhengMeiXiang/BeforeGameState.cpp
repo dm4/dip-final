@@ -33,7 +33,11 @@ void BeforeGameState::processMouseEvent(Director *director, const Point &mousePo
 
 void BeforeGameState::processAnimation(Director *director) {
     if (!isInitialized) {
-        Mat sky = imread("Words/1/17.jpg");
+		if (!director->getCanRecord()) {
+			director->setCanRecord(true);
+			return;
+		}
+		Mat sky = imread("Words/1/17.jpg");
         for (int i = 0; i < 6; i++) {
 			Picture& picture = *director->getPictureAt(i);
 			picture.setContent(sky);
@@ -69,15 +73,30 @@ void BeforeGameState::processAnimation(Director *director) {
 	}
 
     // check all moles done
-    bool isDone = true;
-    for (int i = 0; i < 6; i++) {
-        Picture& picture = *director->getPictureAt(i);
-        if (hasMole[i] || !picture.getAnimation()->animationEnded()) {
-            isDone = false;
-            break;
-        }
-    }
+	bool isDone = true;
+	for (int i = 0; i < 6; i++) {
+		Picture& picture = *director->getPictureAt(i);
+		if(!hasMole[i] && picture.getAnimation()->animationEnded()){
+			picture.setAnimation(IdleAnimationEnum, NULL, NULL);
+			Mat flipImage;
+			flip(director->getRecordImage(), flipImage, 1);
+			picture.setContent(flipImage);
+		}
+	}
+
+	for (int i = 0; i < 6; i++) {
+		Picture& picture = *director->getPictureAt(i);
+		if (hasMole[i] || !picture.getAnimation()->animationEnded()) {
+			isDone = false;
+			break;
+		}
+	}
+
     if (isDone) {
+		director->takePhoto(photo);
+		cvSaveImage("user.jpg",new IplImage(photo));
+		system("god user.jpg user_god.jpg");
+		system("ghost user.jpg user_ghost.jpg");
         director->setAnimationState(new HumanState);
         director->setStartTickCount();
     }

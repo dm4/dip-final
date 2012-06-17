@@ -21,6 +21,7 @@ class BeforeGameState: public AnimationState
 		int eyePosIndex;
 		bool isInitialized;
         bool hasMole[6];
+		cv::Mat photo;
 };
 
 #endif // BEFOREGAME_STATE_H
