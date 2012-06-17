@@ -41,8 +41,9 @@ void GhostState::processAnimation(Director *director)
 
         // set mole
 		for (int i = 0; i < 6; ++i) {
-			//Picture& picture = *director->getPictureAt(i);
-			//picture.setContent(molePhoto);
+			Picture& picture = *director->getPictureAt(i);
+			Rect frame = picture.getFrame();
+            picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
 			hasMole[i] = 0;
 		}
 
@@ -52,6 +53,15 @@ void GhostState::processAnimation(Director *director)
 			Rect frame = picture.getFrame();
             picture.setContent(Mat::zeros(frame.width, frame.height, picture.getType()));
         }
+
+		// set stage name
+		for (int i = 10; i < 14; i++) {
+			Picture& picture = *director->getPictureAt(i);
+			char filename[20];
+			sprintf(filename, "Words/5/%d.jpg", i + 7);
+			picture.setContent(imread(filename));
+		}
+
 		srand((unsigned int)time(NULL));
 		isInitialized = true;
 
