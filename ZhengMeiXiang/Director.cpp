@@ -111,6 +111,7 @@ bool Director::readData()
 	}
 	int numRead = 0;
 	while(ifs.good() && numRead < numPhotos) {
+		cout << "numRead: " << numRead << endl;
 		Rect rect;
 		ifs >> rect.x >> rect.y >> rect.width >> rect.height;
 		pictures.push_back(Picture(painting(rect), rect));

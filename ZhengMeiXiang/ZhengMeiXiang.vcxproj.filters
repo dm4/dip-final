@@ -226,5 +226,8 @@
     <None Include="..\x64\Release\my-settings.txt">
       <Filter>resource</Filter>
     </None>
+    <None Include="..\x64\Release\idle-settings.txt">
+      <Filter>resource</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -37,7 +37,8 @@ enum KeyNumber {ESC = 0x1b, LEFT_ARROW = 0x250000, UP_ARROW = 0x260000,
 const std::string winName = "ZhengMeiXiang"; //!< Window name
 const cv::Size paintingSize(2048, 768);		//!< Painting size
 const cv::Size numPicturesInPainting(3, 2); //!< the numbers of pictures in row and column
-const int numPhotos = 8 + numPicturesInPainting.width * numPicturesInPainting.height; //!< the total number pictures in the painting
+//const int numPhotos = 8 + numPicturesInPainting.width * numPicturesInPainting.height;
+const int numPhotos = 20;
 
 /*!
  * \brief
@@ -198,6 +199,8 @@ public:
 	*/
 	inline cv::Mat getPainting() const {return painting;}
 
+	std::vector<Picture> pictures;
+
 private:
 	bool readData();
 	bool initCamera();
@@ -214,7 +217,7 @@ private:
 	ImagesPool *imagesPool;
 	int64 startTickCount;
 	cv::Mat painting;
-	std::vector<Picture> pictures;
+	
 	bool canRecord;
 	cv::Mat recordImage;
 	std::string capturePhotoPath;
